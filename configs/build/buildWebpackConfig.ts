@@ -21,7 +21,7 @@ export function buildWebpackConfig(
     module: {
       rules: bulidRules(options),
     },
-    resolve: bulidResolve(),
+    resolve: bulidResolve(options),
     devtool: isDev ? 'inline-source-map' : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
   };

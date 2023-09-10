@@ -1,10 +1,10 @@
 import { Route, Routes, Link } from "react-router-dom";
-import { Suspense, useContext} from "react";
+import { Suspense } from "react";
 import "./styles/index.scss"
-import { AboutPageAsync } from "./pages/AboutPage/AboutPage.async";
-import { MainPageAsync } from "./pages/MainPage/MainPage.async";
-import { useTheme } from "./styles/theme/useTheme";
-import { classNames } from "./helpers/classNames/classNames";
+import { AboutPage } from "pages/AboutPage";
+import { MainPage } from "pages/MainPage";
+import { useTheme } from "app/providers/ThemeProviders/lib/useTheme";
+import { classNames } from "shared/lib/classNames/classNames";
 
 export enum Theme {
     WHITE = 'white',
@@ -21,8 +21,8 @@ const App = () => {
       <Link to={"/"}> MainPage </Link>
       <Suspense fallback={<h1>Loading...</h1>}>
         <Routes>
-          <Route path={"/about"} element={<AboutPageAsync />} />
-          <Route path={"/"} element={<MainPageAsync />} />
+          <Route path={"/about"} element={<AboutPage />} />
+          <Route path={"/"} element={<MainPage />} />
         </Routes>
       </Suspense>
     </div>

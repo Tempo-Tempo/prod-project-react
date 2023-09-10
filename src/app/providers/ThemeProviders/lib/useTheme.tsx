@@ -5,7 +5,7 @@ interface useThemeResult {
   theme: Theme;
   toggleTheme: () => void;
 }
-
+  
 export function useTheme(): useThemeResult {
   const { theme, setTheme } = useContext(ThemeContext);
 
