@@ -3,6 +3,11 @@ import webpack from "webpack";
 import { BuildOptions } from "./types/config";
 
 export function bulidRules({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ["@svgr/webpack"],
+  };
+
   const scssScriptLoader = {
     test: /\.s[ac]ss$/i,
     use: [
@@ -13,9 +18,11 @@ export function bulidRules({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         loader: "css-loader",
         options: {
           modules: {
-            auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-            localIdentName: isDev ? "[path][name]__[local]--[hash:base64:5]" : '[hash:base64:5]',
-          }
+            auto: (resPath: string) => Boolean(resPath.includes(".module.")),
+            localIdentName: isDev
+              ? "[path][name]__[local]--[hash:base64:5]"
+              : "[hash:base64:5]",
+          },
         },
       },
       // Compiles Sass to CSS
@@ -29,5 +36,14 @@ export function bulidRules({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     exclude: /node_modules/,
   };
 
-  return [typeScriptLoader, scssScriptLoader];
+  const fileLoader = {
+    test: /\.(png|jpe?g|gif)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
+  };
+
+  return [fileLoader, svgLoader, typeScriptLoader, scssScriptLoader,];
 }

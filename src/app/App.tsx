@@ -1,30 +1,22 @@
-import { Route, Routes, Link } from "react-router-dom";
-import { Suspense } from "react";
-import "./styles/index.scss"
-import { AboutPage } from "pages/AboutPage";
-import { MainPage } from "pages/MainPage";
+import "./styles/index.scss";
 import { useTheme } from "app/providers/ThemeProviders/lib/useTheme";
 import { classNames } from "shared/lib/classNames/classNames";
+import { AppRouter } from "./providers/AppRouter";
+import { Navbar } from "widget/navbar";
+
 
 export enum Theme {
-    WHITE = 'white',
-    DARK = 'dark'
+  WHITE = "white",
+  DARK = "dark",
 }
 
 const App = () => {
-  const {theme, toggleTheme} = useTheme();
-  
+  const { theme } = useTheme();
+
   return (
-    <div className={classNames('app', {}, [theme])}>
-      <button onClick={toggleTheme}>toggle</button>
-      <Link to={"/about"}> About page </Link>
-      <Link to={"/"}> MainPage </Link>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Routes>
-          <Route path={"/about"} element={<AboutPage />} />
-          <Route path={"/"} element={<MainPage />} />
-        </Routes>
-      </Suspense>
+    <div className={classNames("app", {}, [theme])}>
+      <Navbar />
+      <AppRouter />
     </div>
   );
 };
