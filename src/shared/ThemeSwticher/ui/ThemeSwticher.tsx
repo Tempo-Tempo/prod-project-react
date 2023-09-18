@@ -5,6 +5,7 @@ import { FC } from "react";
 import LightIcon from "shared/assets/icons/theme-light.svg";
 import DarkIcon from "shared/assets/icons/theme-dark.svg"
 import { Theme } from "app/providers/ThemeProviders/lib/themeContext";
+import { MyButton, ThemeButton } from "shared/MyButton/MyButton";
 
 
 
@@ -16,11 +17,12 @@ export const ThemeSwticher: FC<ThemeSwticherProps> = (props) => {
   const {theme, toggleTheme } = useTheme();
   const {className, children, ...otherProps} = props;
   return (
-    <button
+    <MyButton
       onClick={toggleTheme}
+      theme={ThemeButton.CLEAR}
       className={classNames(cls.ThemeSwticher, {}, [className])}
     >
-     {theme === Theme.DARK ? <LightIcon/> : <DarkIcon/>} 
-    </button>
+     {theme === Theme.DARK ? <DarkIcon/> : <LightIcon/>} 
+    </MyButton>
   );
 };

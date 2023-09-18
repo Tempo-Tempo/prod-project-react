@@ -15,3 +15,5 @@ declare module '*.scss' {
 declare module '*.jpeg';
 declare module '*.png';
 declare module '*.jpg';
+
+declare const __IS_DEV__: boolean;

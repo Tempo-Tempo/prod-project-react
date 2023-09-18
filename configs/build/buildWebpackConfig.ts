@@ -24,5 +24,6 @@ export function buildWebpackConfig(
     resolve: bulidResolve(options),
     devtool: isDev ? 'inline-source-map' : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
+    watch: true,
   };
 }

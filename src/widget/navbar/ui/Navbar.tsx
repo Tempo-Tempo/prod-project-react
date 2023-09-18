@@ -10,7 +10,6 @@ interface NavbarProps {
 const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={classNames(cls.Navbar, {}, [className])}>
-     <ThemeSwticher>Toggle</ThemeSwticher>
       <div className={cls.Links}>
         <AppLink
           theme={AppThemeLinks.SECONDARY}
@@ -18,11 +17,11 @@ const Navbar = ({ className }: NavbarProps) => {
           to={"/"}
         >
           {" "}
-          О сайте
+          Главная
         </AppLink>
         <AppLink theme={AppThemeLinks.SECONDARY} to={"/about"}>
           {" "}
-          Главная
+          О сайте
         </AppLink>
       </div>
     </div>
