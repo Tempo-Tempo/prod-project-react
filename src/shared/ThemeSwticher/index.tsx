@@ -1,1 +1,1 @@
-export { ThemeSwticher } from "./ui/ThemeSwticher";
+export { ThemeSwticher } from './ui/ThemeSwticher';
