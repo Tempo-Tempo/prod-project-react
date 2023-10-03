@@ -6,9 +6,17 @@ import cls from './LanguageSwitcher.module.scss';
 export const LanguageSwitcher = () => {
     const { t, i18n } = useTranslation();
 
-    const toggle = () => {
+    const toggle = async () => {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     };
 
-    return <MyButton theme={ThemeButton.CLEAR} className={classNames(cls.lng)} onClick={toggle}>{t('Язык')}</MyButton>;
+    return (
+        <MyButton
+            theme={ThemeButton.CLEAR}
+            className={classNames(cls.lng)}
+            onClick={toggle}
+        >
+            {t('Язык')}
+        </MyButton>
+    );
 };

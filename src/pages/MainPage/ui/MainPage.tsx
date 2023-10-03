@@ -1,3 +1,4 @@
+import { BugButton } from 'pages/PageError';
 import { useTranslation } from 'react-i18next';
 
 const MainPage = () => {
@@ -5,6 +6,7 @@ const MainPage = () => {
     return (
         <div>
             <div>{t('Это главная страница')}</div>
+            <BugButton />
         </div>
     );
 };
