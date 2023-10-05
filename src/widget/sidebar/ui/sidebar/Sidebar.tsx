@@ -23,7 +23,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
             className={classNames(cls.Sidebar, { [cls.Collapsed]: collapsed }, [className])}
         >
             <MyButton
-                type="button"
+                data-testid="sidebar-toggle"
                 onClick={toggleSidebar}
             >
                 {collapsed ? t('Открыть') : t('Закрыть')}
