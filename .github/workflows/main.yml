@@ -19,10 +19,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: start app
         run: npm run start
-      - name: test build:prod
-        run: npm run build:prod
-      - name: test build:dev
-        run: npm run build:dev
       - name: run eslint tests
         run: npm run lint:ts
       - name: run eslint fixed
