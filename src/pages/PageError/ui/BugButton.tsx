@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MyButton } from 'shared/MyButton/MyButton';
 
 interface BugButtonProps {
@@ -7,6 +8,7 @@ interface BugButtonProps {
 
 export const BugButton = ({ className }: BugButtonProps) => {
     const [error, setError] = useState(false);
+    const { t } = useTranslation('navbar');
 
     const tryError = () => setError(true);
 
@@ -15,6 +17,6 @@ export const BugButton = ({ className }: BugButtonProps) => {
     }, [error]);
 
     return (
-        <MyButton onClick={tryError}>try error</MyButton>
+        <MyButton onClick={tryError}>{t('Главная')}</MyButton>
     );
 };
