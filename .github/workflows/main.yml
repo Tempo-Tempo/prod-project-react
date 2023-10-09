@@ -32,5 +32,3 @@ jobs:
       - name: run unit test
         run: npm run unit
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
