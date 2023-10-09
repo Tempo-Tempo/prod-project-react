@@ -25,7 +25,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
             <MyButton
                 data-testid="sidebar-toggle"
                 onClick={toggleSidebar}
-                className={classNames(cls.sidebarBtn, {}, [])}
+                className={cls.sidebarBtn}
                 size={SizeButton.M}
                 theme={ThemeButton.BACKGROUND}
             >
