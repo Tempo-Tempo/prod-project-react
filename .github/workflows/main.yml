@@ -35,3 +35,4 @@ jobs:
         run: npm run lint:scss:fix
       - name: run unit test
         run: npm run unit
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
