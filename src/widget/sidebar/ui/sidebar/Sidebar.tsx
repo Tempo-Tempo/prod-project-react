@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwticher } from 'shared/ThemeSwticher';
 import { LanguageSwitcher } from 'features/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
-import { MyButton } from 'shared/MyButton/MyButton';
+import { MyButton, SizeButton, ThemeButton } from 'shared/MyButton/MyButton';
 import cls from './Sidebar.module.scss';
 
 export interface SidebarProps {
@@ -25,8 +25,11 @@ export const Sidebar = ({ className }: SidebarProps) => {
             <MyButton
                 data-testid="sidebar-toggle"
                 onClick={toggleSidebar}
+                className={classNames(cls.sidebarBtn, {}, [])}
+                size={SizeButton.M}
+                theme={ThemeButton.BACKGROUND}
             >
-                {collapsed ? t('Открыть') : t('Закрыть')}
+                {collapsed ? '>' : '<'}
             </MyButton>
             <div className={cls.swtichers}>
                 <ThemeSwticher />

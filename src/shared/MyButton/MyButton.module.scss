@@ -9,3 +9,22 @@
     border: none;
     outline: none;
 }
+
+.background {
+    background: var(--primary-color);
+    font: var(--font-size-m);
+    color: black;
+}
+
+.backgroundInverted {
+    background: var(--inverted-primary-color);
+    font: var(--font-size-m);
+}
+
+.outline {
+    outline: none;
+}
+
+.size-m {
+    font-size: var(--font-size-m);
+}
