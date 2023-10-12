@@ -26,8 +26,8 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 data-testid="sidebar-toggle"
                 onClick={toggleSidebar}
                 className={cls.sidebarBtn}
-                size={SizeButton.M}
-                theme={ThemeButton.BACKGROUND}
+                size={SizeButton.XL}
+                theme={ThemeButton.BACKGROUND_INVERTED}
             >
                 {collapsed ? '>' : '<'}
             </MyButton>
