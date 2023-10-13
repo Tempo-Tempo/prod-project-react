@@ -28,4 +28,5 @@
     "./config/jest/setupTests.ts",
     "src"
 , "configs/storybook/styleDecorators/styleDecorators.tsx"  ]
+
 }
