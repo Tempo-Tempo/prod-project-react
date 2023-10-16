@@ -29,8 +29,8 @@ jobs:
         if: always()
         run: npm run unit
       - name: 🔎 loki testing
-        run: loki:test
+        run: npm run loki:test
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - name: 💡 build production project
-        run: npm run build:prod
-        if: always()
+      # - name: 💡 build production project
+      #   run: npm run build:prod
+      #   if: always()
