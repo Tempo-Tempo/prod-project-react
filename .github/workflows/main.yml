@@ -20,9 +20,6 @@ jobs:
       - name: 🖥 install modules
         run: npm install
         if: always()
-      - name: 💡 build production project
-        run: npm run build:prod
-        if: always()
       - name: 🔎 linting typescript
         run: npm run lint:ts
       - name: 🔎 linting scss
@@ -31,4 +28,9 @@ jobs:
       - name: 🔎 unit testing
         if: always()
         run: npm run test:unit
+      - name: 🔎 unit testing
+        run: loki:test
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: 💡 build production project
+        run: npm run build:prod
+        if: always()
