@@ -27,8 +27,8 @@ jobs:
         run: npm run lint:scss
       - name: 🔎 unit testing
         if: always()
-        run: npm run test:unit
-      - name: 🔎 unit testing
+        run: npm run unit
+      - name: 🔎 loki testing
         run: loki:test
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: 💡 build production project
