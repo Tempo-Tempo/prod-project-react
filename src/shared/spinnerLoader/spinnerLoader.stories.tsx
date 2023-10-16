@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProviders';
 // Пофиксить пути, нужно папку с декоратоами в другие места перкинуть
-import { themeDecorator } from '../../../configs/storybook/themeDecorators/themeDecorator';
+import { themeDecorator } from 'shared/storybookDecorators/themeDecorators/themeDecorator';
 import { SpinnerLoader } from './spinnerLoader';
 
 export default {

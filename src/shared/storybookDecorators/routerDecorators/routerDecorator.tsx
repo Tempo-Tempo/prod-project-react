@@ -1,4 +1,3 @@
-import React from 'react';
 import { Story } from '@storybook/store';
 import { BrowserRouter } from 'react-router-dom';
 

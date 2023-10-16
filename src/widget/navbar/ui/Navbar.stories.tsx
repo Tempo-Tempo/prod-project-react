@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProviders';
-// Пофиксить пути, нужно папку с декоратоами в другие места перкинуть
-import { themeDecorator } from '../../../../configs/storybook/themeDecorators/themeDecorator';
+import { themeDecorator } from 'shared/storybookDecorators/themeDecorators/themeDecorator';
 import { Navbar } from './Navbar';
 
 export default {
@@ -14,8 +13,9 @@ export default {
 
 const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
 
-export const SidebarDark = Template.bind({});
-SidebarDark.args = {};
+export const NavbarDark = Template.bind({});
+NavbarDark.args = {};
+NavbarDark.decorators = [themeDecorator(Theme.DARK)];
 
-export const SidebarLight = Template.bind({});
-SidebarLight.args = {};
+export const NavbarLight = Template.bind({});
+NavbarLight.args = {};

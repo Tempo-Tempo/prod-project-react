@@ -27,6 +27,6 @@
   "include": [
     "./config/jest/setupTests.ts",
     "src"
-, "configs/storybook/styleDecorators/styleDecorators.tsx"  ]
+, "src/shared/storybookDecorators/styleDecorators/styleDecorators.tsx"  ]
 
 }

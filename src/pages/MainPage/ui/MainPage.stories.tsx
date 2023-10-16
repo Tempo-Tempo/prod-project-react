@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProviders';
 // Пофиксить пути, нужно папку с декоратоами в другие места перкинуть
-import { themeDecorator } from '../../../../configs/storybook/themeDecorators/themeDecorator';
+import { themeDecorator } from 'shared/storybookDecorators/themeDecorators/themeDecorator';
 import MainPage from './MainPage';
 
 export default {
@@ -14,8 +14,10 @@ export default {
 
 const Template: ComponentStory<typeof MainPage> = () => <MainPage />;
 
-export const SidebarDark = Template.bind({});
-SidebarDark.args = {};
+export const MainPageDark = Template.bind({});
+MainPageDark.args = {};
 
-export const SidebarLight = Template.bind({});
-SidebarLight.args = {};
+MainPageDark.decorators = [themeDecorator(Theme.DARK)];
+
+export const MainPageLight = Template.bind({});
+MainPageLight.args = {};
