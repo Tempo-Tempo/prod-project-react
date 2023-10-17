@@ -28,6 +28,9 @@ jobs:
       - name: 🔎 unit testing
         if: always()
         run: npm run unit
+      - name: 🔎 run storybook
+        if: always()
+        run: npm run storybook
       - name: 🔎 loki testing
         run: npm run loki:test
       - run: echo "🍏 This job's status is ${{ job.status }}."
