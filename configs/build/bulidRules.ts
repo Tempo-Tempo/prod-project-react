@@ -1,7 +1,7 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 import { BuildOptions } from './types/config';
+import { scssLoader } from './loaders/scssLoader';
 
 export function bulidRules({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     const svgLoader = {
@@ -24,27 +24,7 @@ export function bulidRules({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         },
     };
 
-    const scssScriptLoader = {
-        test: /\.s[ac]ss$/i,
-        use: [
-            // Creates `style` nodes from JS strings
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-            // Translates CSS into CommonJS
-            {
-                loader: 'css-loader',
-                options: {
-                    modules: {
-                        auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-                        localIdentName: isDev
-                            ? '[path][name]__[local]--[hash:base64:5]'
-                            : '[hash:base64:5]',
-                    },
-                },
-            },
-            // Compiles Sass to CSS
-            'sass-loader',
-        ],
-    };
+    const scssScriptLoader = scssLoader(isDev);
 
     const typeScriptLoader = {
         test: /\.tsx?$/,

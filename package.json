@@ -23,6 +23,7 @@
     "@babel/preset-typescript": "^7.16.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
     "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-docs": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-interactions": "^6.4.19",
     "@storybook/addon-links": "^6.4.19",
@@ -60,13 +61,15 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "json-server": "^0.17.0",
-    "loki": "^0.28.1",
+    "loki": "^0.32.0",
     "mini-css-extract-plugin": "^2.5.3",
+    "postcss": "^8.4.13",
     "react-refresh": "^0.12.0",
     "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
+    "storybook": "^6.4.19",
     "style-loader": "^3.3.1",
     "stylelint": "^14.5.3",
     "stylelint-config-rational-order": "^0.1.2",
@@ -88,10 +91,30 @@
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
-    "unit": "jest --config ./configs/jest/jest.config.ts"
+    "loki:test": "npx loki test",
+    "loki:test:ok": "npx loki approve",
+    "loki:test:ci": "loki --requireReference --reactUri file:./storybook-static",
+    "unit": "jest --config ./configs/jest/jest.config.ts",
+    "storybook": "start-storybook -p 6006 -c ./configs/storybook",
+    "storybook:build": "build-storybook -c ./configs/storybook"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.docker",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.docker",
+        "preset": "iPhone 7"
+      }
+    }
+  }
 }
