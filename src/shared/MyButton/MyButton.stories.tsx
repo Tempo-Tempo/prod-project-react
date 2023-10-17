@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProviders';
 import { themeDecorator } from 'shared/storybookDecorators/themeDecorators/themeDecorator';
-import { MyButton, ThemeButton } from './MyButton';
+import { MyButton, SizeButton, ThemeButton } from './MyButton';
 
 export default {
     title: 'shared/MyButton',
@@ -16,21 +16,28 @@ export default {
 
 const Template: ComponentStory<typeof MyButton> = (args) => <MyButton {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const MyButtonDefault = Template.bind({});
+MyButtonDefault.args = {
+    theme: ThemeButton,
 };
 
-export const Clear = Template.bind({});
-Clear.args = {
-    theme: ThemeButton.CLEAR,
+export const MyButtonDefaultBlack = Template.bind({});
+MyButtonDefaultBlack.args = {
+    theme: ThemeButton,
 };
 
-export const Outline = Template.bind({});
-Outline.args = {
-    theme: ThemeButton.OUTLINE,
+MyButtonDefaultBlack.decorators = [themeDecorator(Theme.DARK)];
+
+export const MyButtonSquare = Template.bind({});
+MyButtonSquare.args = {
+    size: SizeButton.XL,
+    theme: ThemeButton,
 };
 
-export const OutlineDark = Template.bind({});
-Outline.args = {};
+export const MyButtonSquareBlack = Template.bind({});
+MyButtonSquareBlack.args = {
+    size: SizeButton.XL,
+    theme: ThemeButton,
+};
 
-OutlineDark.decorators = [themeDecorator(Theme.DARK)];
+MyButtonSquareBlack.decorators = [themeDecorator(Theme.DARK)];
