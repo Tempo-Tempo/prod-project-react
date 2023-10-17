@@ -32,7 +32,7 @@ jobs:
         if: always()
         run: npm run storybook:build
       - name: 🔎 loki testing
-        run: npm run loki:test
+        run: npm run loki:test:ci
       - run: echo "🍏 This job's status is ${{ job.status }}."
       # - name: 💡 build production project
       #   run: npm run build:prod
