@@ -10,8 +10,9 @@ export interface renderAnyComponentProps {
 
 export function renderAnyComponent(
     component: ReactNode,
-    { initialRoute = '/' }: renderAnyComponentProps,
+    options?: renderAnyComponentProps,
 ) {
+    const { initialRoute } = options;
     return render(
         <MemoryRouter initialEntries={[initialRoute]}>
             <I18nextProvider i18n={i18nTests}>
