@@ -10,7 +10,7 @@ export interface renderAnyComponentProps {
 
 export function renderAnyComponent(
     component: ReactNode,
-    options?: renderAnyComponentProps,
+    options: renderAnyComponentProps = {},
 ) {
     const { initialRoute = '/' } = options;
     return render(
