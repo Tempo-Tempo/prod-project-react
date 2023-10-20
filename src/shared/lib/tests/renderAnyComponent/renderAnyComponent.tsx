@@ -12,7 +12,7 @@ export function renderAnyComponent(
     component: ReactNode,
     options?: renderAnyComponentProps,
 ) {
-    const { initialRoute } = options;
+    const { initialRoute = '/' } = options;
     return render(
         <MemoryRouter initialEntries={[initialRoute]}>
             <I18nextProvider i18n={i18nTests}>
