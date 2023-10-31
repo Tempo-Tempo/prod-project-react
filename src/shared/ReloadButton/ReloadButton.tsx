@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { MyButton } from 'shared/MyButton/MyButton';
+import { MyButton } from 'shared/ui/MyButton/MyButton';
 import cls from './ReloadButton.module.scss';
 
 interface ReloadButtonProps {

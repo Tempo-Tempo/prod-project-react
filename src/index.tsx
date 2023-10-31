@@ -4,6 +4,7 @@ import { ThemeProvider } from 'app/providers/ThemeProviders';
 import { ErrorBoundary } from 'app/providers/ErrorBound';
 import App from './app/App';
 import 'shared/i18n/i18n';
+import './app/styles/index.scss';
 
 render(
     <BrowserRouter>

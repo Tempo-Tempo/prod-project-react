@@ -1,7 +1,8 @@
 import {
-    ReactNode, useState, MouseEvent, useRef, useEffect,
+    ReactNode, useState, MouseEvent, useRef, useEffect, useCallback,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Portal } from 'shared/Portal/Portal';
 import cls from './MyModal.module.scss';
 
 interface MyModalProps {
@@ -22,7 +23,7 @@ export const MyModal = (props : MyModalProps) => {
 
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
-    const handlerClose = () => {
+    const handlerClose = useCallback(() => {
         if (isClose) {
             isClose();
             setIsClosing(true);
@@ -31,38 +32,45 @@ export const MyModal = (props : MyModalProps) => {
                 setIsClosing(false);
             }, ANIMATION_DELAY);
         }
-    };
+    }, [isClose]);
 
     const onHandlerClose = (e: MouseEvent) => {
         e.stopPropagation();
     };
 
     useEffect(() => {
-        clearTimeout(timerRef.current);
+        window.addEventListener('keydown', (e: KeyboardEvent) => {
+            if (e.key === 'Escape') handlerClose();
+        });
+        return () => {
+            clearTimeout(timerRef.current);
+        };
     }, []);
 
     return (
-        <div className={classNames(
-            cls.Modal,
-            { [cls.oppened]: isOpen, [cls.isClosing]: isClosing },
-            [className],
-        )}
-        >
-            <div
-                onClick={handlerClose}
-                onKeyDown={handlerClose}
-                className={classNames(cls.Overlay)}
-                aria-hidden="true"
+        <Portal>
+            <div className={classNames(
+                cls.Modal,
+                { [cls.oppened]: isOpen, [cls.isClosing]: isClosing },
+                [className],
+            )}
             >
                 <div
-                    onClick={onHandlerClose}
+                    onClick={handlerClose}
                     onKeyDown={handlerClose}
-                    className={classNames(cls.Content)}
+                    className={classNames(cls.Overlay)}
                     aria-hidden="true"
                 >
-                    {children}
+                    <div
+                        onClick={onHandlerClose}
+                        onKeyDown={handlerClose}
+                        className={classNames(cls.Content)}
+                        aria-hidden="true"
+                    >
+                        {children}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Portal>
     );
 };

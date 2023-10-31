@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MyButton } from 'shared/MyButton/MyButton';
+import { MyButton } from 'shared/ui/MyButton/MyButton';
 
 interface BugButtonProps {
    className?: string,

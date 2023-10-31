@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwticher } from 'shared/ThemeSwticher';
 import { LanguageSwitcher } from 'features/LanguageSwitcher';
-import { MyButton, SizeButton, ThemeButton } from 'shared/MyButton/MyButton';
+import { MyButton, SizeButton, ThemeButton } from 'shared/ui/MyButton/MyButton';
 import { AppLink, AppThemeLinks } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/routerConfig/routerConfig';

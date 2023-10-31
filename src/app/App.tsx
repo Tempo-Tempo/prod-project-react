@@ -1,4 +1,3 @@
-import './styles/index.scss';
 import { useTheme } from 'app/providers/ThemeProviders/lib/useTheme';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Navbar } from 'widget/navbar';
@@ -28,15 +27,6 @@ const App = () => {
                     <Sidebar />
                     {' '}
                     <AppRouter />
-                    <button onClick={openModal}>toggle</button>
-                    <MyModal isOpen={isOpen} isClose={() => setIsOpen(false)}>
-                        dsaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                        dddddddddddddddddddddddddddddddddddddddddd
-                        ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                        dddddddddddddddddddddddddddddddddddddddddd
-                        ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                        dddddddddddddddddddddddddddddddddddddddddd
-                    </MyModal>
                 </div>
             </Suspense>
         </div>

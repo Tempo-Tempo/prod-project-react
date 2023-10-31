@@ -3,11 +3,14 @@
 @import "themes/white";
 @import "variables/global";
 
-.app {
-    min-height: 100vh;
+body {
     color: var(--primary-color);
     font: var(--font-m);
+}
+
+.app {
     background: var(--bg-color);
+    min-height: 100vh;
 }
 
 .content_page {

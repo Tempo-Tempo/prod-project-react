@@ -4,7 +4,7 @@ import { FC } from 'react';
 import LightIcon from 'shared/assets/icons/theme-light.svg';
 import DarkIcon from 'shared/assets/icons/theme-dark.svg';
 import { Theme } from 'app/providers/ThemeProviders/lib/themeContext';
-import { MyButton, ThemeButton } from 'shared/MyButton/MyButton';
+import { MyButton, ThemeButton } from 'shared/ui/MyButton/MyButton';
 
 export interface ThemeSwticherProps {
   className?: string;
