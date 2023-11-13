@@ -1,3 +1,4 @@
+import { MyCounter } from 'entities/MyCounter/ui/MyCounter';
 import { BugButton } from 'pages/PageError';
 import { useTranslation } from 'react-i18next';
 
@@ -7,6 +8,7 @@ const MainPage = () => {
         <div>
             <div>{t('Это главная страница')}</div>
             <BugButton />
+            <MyCounter />
         </div>
     );
 };

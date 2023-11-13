@@ -45,6 +45,7 @@ module.exports = {
         camelcase: 'off',
         'no-use-before-define': ['error', { variables: false }],
         'max-len': ['error', { ignoreComments: true, code: 100 }],
+        'no-param-reassign': 'off',
     },
     globals: {
         __IS_DEV__: true,
