@@ -3,12 +3,11 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Navbar } from 'widget/navbar';
 import { Sidebar } from 'widget/sidebar';
 import React, { Suspense, useState } from 'react';
-import { MyModal } from 'shared/ui/MyModal/MyModal';
 import { AppRouter } from './providers/AppRouter';
 
 export enum Theme {
-  WHITE = 'white',
-  DARK = 'dark',
+  WHITE = 'app_white_theme',
+  DARK = 'app_dark_theme',
 }
 
 const App = () => {
@@ -20,7 +19,7 @@ const App = () => {
     };
 
     return (
-        <div className={classNames('app', {}, [theme])}>
+        <div className={classNames('app', {}, [])}>
             <Suspense fallback="">
                 <Navbar />
                 <div className="content_page">

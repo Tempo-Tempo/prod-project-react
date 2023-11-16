@@ -1,3 +1,4 @@
+import { useTheme } from 'app/providers/ThemeProviders';
 import {
     ReactNode, useState, MouseEvent, useRef, useEffect, useCallback,
 } from 'react';
@@ -20,6 +21,8 @@ export const MyModal = (props : MyModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
 
     const ANIMATION_DELAY = 300;
+
+    const { theme } = useTheme();
 
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 

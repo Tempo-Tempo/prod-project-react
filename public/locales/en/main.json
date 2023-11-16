@@ -1,3 +1,5 @@
 {
-   "Это главная страница": "This is main page"
+   "Это главная страница": "This is main page",
+   "Прибавить": "Increment",
+   "Отнять": "Decrement"
 }

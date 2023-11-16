@@ -10,4 +10,7 @@ describe('test counterSlice', () => {
         const state: CounterScheme = { value: 10 };
         expect(counterReducer(state, counterActions.decrement())).toEqual({ value: 9 });
     });
+    test('default value', () => {
+        expect(counterReducer(undefined, counterActions.increment())).toEqual({ value: 1 });
+    });
 });
