@@ -44,9 +44,11 @@ export const MyModal = (props : MyModalProps) => {
     useEffect(() => {
         window.addEventListener('keydown', (e: KeyboardEvent) => {
             if (e.key === 'Escape') handlerClose();
+            console.log('alo1');
         });
         return () => {
             clearTimeout(timerRef.current);
+            console.log('alo2');
         };
     }, []);
 

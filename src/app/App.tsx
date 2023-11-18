@@ -12,11 +12,6 @@ export enum Theme {
 
 const App = () => {
     const { theme } = useTheme();
-    const [isOpen, setIsOpen] = useState(false);
-    const openModal = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setIsOpen(true);
-    };
 
     return (
         <div className={classNames('app', {}, [])}>

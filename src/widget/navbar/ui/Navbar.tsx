@@ -1,3 +1,4 @@
+import { LoginModal } from 'features/AuthByUsername';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -24,14 +25,7 @@ const Navbar = ({ className }: NavbarProps) => {
                 <MyButton theme={ThemeButton.OUTLINE_INVERTED} onClick={(e) => singIn(e)}>
                     {t('Войти')}
                 </MyButton>
-                <MyModal isOpen={isAuth} isClose={() => setIsAuth(false)}>
-                    dsaddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                    dddddddddddddddddddddddddddddddddddddddddd
-                    ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                    dddddddddddddddddddddddddddddddddddddddddd
-                    ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                    dddddddddddddddddddddddddddddddddddddddddd
-                </MyModal>
+                <LoginModal className="test" isOpen={isAuth} isClose={() => setIsAuth(false)} />
             </div>
 
         </div>
