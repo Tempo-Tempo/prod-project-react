@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { MyModal } from 'shared/ui/MyModal/MyModal';
 import { LoginFrom } from '../LoginForm/LoginForm';
@@ -11,15 +12,18 @@ interface LoginModalProps {
 export const LoginModal = (props: LoginModalProps) => {
     const { className, isOpen, isClose } = props;
 
-    console.log(isClose);
+    // КОСТЫЛЕК НАДО БЫ ИСПРАВИТЬ
+    const [btnClose, setBtnClose] = useState<boolean>();
 
     return (
         <MyModal
-            className={classNames('', {}, [className])}
             isOpen={isOpen}
-            isClose={() => isClose()}
+            isClose={isClose}
+            btnClose={btnClose}
+            lazy
+            className={classNames('', {}, [className])}
         >
-            <LoginFrom />
+            <LoginFrom isClose={() => setBtnClose((prev) => !prev)} />
         </MyModal>
     );
 };

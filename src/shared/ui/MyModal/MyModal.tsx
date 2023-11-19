@@ -9,16 +9,19 @@ import cls from './MyModal.module.scss';
 interface MyModalProps {
    className?: string,
    children: ReactNode,
-   isOpen: boolean,
-   isClose: () => void;
+   isOpen?: boolean,
+   btnClose?: boolean,
+   lazy?: boolean,
+   isClose?: () => void;
 }
 
 export const MyModal = (props : MyModalProps) => {
     const {
-        className, children, isOpen, isClose,
+        className, children, isOpen, isClose, btnClose, lazy,
     } = props;
 
     const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
     const ANIMATION_DELAY = 300;
 
@@ -26,10 +29,17 @@ export const MyModal = (props : MyModalProps) => {
 
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true);
+        }
+    }, [isOpen]);
+
     const handlerClose = useCallback(() => {
         if (isClose) {
             isClose();
             setIsClosing(true);
+            console.log('Анимация');
             timerRef.current = setTimeout(() => {
                 isClose();
                 setIsClosing(false);
@@ -44,13 +54,24 @@ export const MyModal = (props : MyModalProps) => {
     useEffect(() => {
         window.addEventListener('keydown', (e: KeyboardEvent) => {
             if (e.key === 'Escape') handlerClose();
-            console.log('alo1');
         });
         return () => {
             clearTimeout(timerRef.current);
             console.log('alo2');
         };
     }, []);
+
+    // КОСТЫЛЕК НАДО БЫ ИСПРАВИТЬ
+
+    useEffect(() => {
+        if (btnClose !== undefined) handlerClose();
+    }, [btnClose]);
+
+    // ПРИ САМОМ ПЕРВОМ ВКЛЮЧЕНИЕ НЕ ОТРАБАТЫВАЕТ АНИМАЦИЯ
+
+    if (lazy && !isMounted) {
+        return null;
+    }
 
     return (
         <Portal>
@@ -62,13 +83,11 @@ export const MyModal = (props : MyModalProps) => {
             >
                 <div
                     onClick={handlerClose}
-                    onKeyDown={handlerClose}
                     className={classNames(cls.Overlay)}
                     aria-hidden="true"
                 >
                     <div
                         onClick={onHandlerClose}
-                        onKeyDown={handlerClose}
                         className={classNames(cls.Content)}
                         aria-hidden="true"
                     >

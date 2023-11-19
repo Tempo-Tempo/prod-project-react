@@ -1,4 +1,6 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, {
+    InputHTMLAttributes, memo, useEffect, useRef, useState,
+} from 'react';
 import cls from './MyInput.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
@@ -6,22 +8,47 @@ type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onC
 interface MyInputProps extends HTMLInputProps {
    typeInput?: string,
    value?: string,
-   onChange: (value: string) => void;
+   autoFocus?: boolean,
+   onChange?: (value: string) => void,
 }
 
-export const MyInput = ({
-    typeInput = 'text', value, onChange, ...otherPropss
-}: MyInputProps) => {
+export const MyInput = memo((props: MyInputProps) => {
+    const {
+        typeInput = 'text', value, onChange, autoFocus, ...otherProps
+    } = props;
+
+    const inputRef = useRef<HTMLInputElement>();
+    const [isFocused, setIsFocused] = useState(false);
+
+    useEffect(() => {
+        if (autoFocus) {
+            setIsFocused(true);
+        }
+    }, [autoFocus]);
+
+    const onFocus = () => {
+        setIsFocused(true);
+    };
+
+    const onBlur = () => {
+        setIsFocused(false);
+    };
+
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange(e.target.value);
+        console.log(inputRef.current);
+        onChange?.(e.target.value);
     };
 
     return (
         <input
+            ref={inputRef}
             className={cls.MyInput}
             type={typeInput}
             value={value}
+            onFocus={onFocus}
+            onBlur={onBlur}
             onChange={(e) => onChangeHandler(e)}
+            {...otherProps}
         />
     );
-};
+});

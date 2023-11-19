@@ -1,11 +1,15 @@
-import { MyButton } from 'shared/ui/MyButton/MyButton';
+import { MyButton, ThemeButton } from 'shared/ui/MyButton/MyButton';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { MyInput } from 'shared/ui/MyInput/MyInput';
 import { useState } from 'react';
 import cls from './LoginForm.module.scss';
 
-export const LoginFrom = () => {
+interface LoginFormProps {
+    isClose: () => void;
+}
+
+export const LoginFrom = ({ isClose }: LoginFormProps) => {
     const { t } = useTranslation('navbar');
 
     const [login, setLogin] = useState('');
@@ -13,15 +17,31 @@ export const LoginFrom = () => {
 
     const singIn = (e: any) => {
         e.preventDefault();
-        console.log(login, 'ETO LOGIN');
-        console.log(password, 'ETO PASSWORD');
+        isClose();
+        setLogin('');
+        setPassword('');
     };
 
     return (
         <form className={classNames(cls.LoginForm, {}, [])}>
-            <MyInput onChange={(e) => setLogin(e)} value={login} />
-            <MyInput onChange={(e) => setPassword(e)} value={password} />
-            <MyButton onClick={singIn} className={cls.loginBtn}>{t('Войти')}</MyButton>
+            <MyInput
+                placeholder={t('Введите логин')}
+                onChange={(e) => setLogin(e)}
+                value={login}
+            />
+            <MyInput
+                placeholder={t('Введите пароль')}
+                onChange={(e) => setPassword(e)}
+                value={password}
+            />
+            <MyButton
+                onClick={singIn}
+                theme={ThemeButton.OUTLINE}
+                className={cls.loginBtn}
+            >
+                {t('Войти')}
+
+            </MyButton>
         </form>
     );
 };
