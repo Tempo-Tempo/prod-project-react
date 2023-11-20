@@ -2,8 +2,12 @@ import { MyButton, ThemeButton } from 'shared/ui/MyButton/MyButton';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { MyInput } from 'shared/ui/MyInput/MyInput';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCallback } from 'react';
+import { loginActions, loginReduser } from 'features/AuthByUsername/model/slice/LoginSlice';
+import { getLoginData } from 'features/AuthByUsername/model/selectors/getLoginData/getLoginData';
 import cls from './LoginForm.module.scss';
+import { loginByUsername } from '../../services/loginByUsername/loginByUsername';
 
 interface LoginFormProps {
     isClose: () => void;
@@ -12,26 +16,33 @@ interface LoginFormProps {
 export const LoginFrom = ({ isClose }: LoginFormProps) => {
     const { t } = useTranslation('navbar');
 
-    const [login, setLogin] = useState('');
-    const [password, setPassword] = useState('');
+    const dispath = useDispatch();
 
-    const singIn = (e: any) => {
-        e.preventDefault();
+    const { password, username } = useSelector(getLoginData);
+
+    const singIn = useCallback(() => {
         isClose();
-        setLogin('');
-        setPassword('');
-    };
+        dispath(loginByUsername({ username, password }));
+    }, [dispath, username, password]);
+
+    const onChangeUsername = useCallback((value) => {
+        dispath(loginActions.setUsername(value));
+    }, []);
+
+    const onChangePassword = useCallback((value) => {
+        dispath(loginActions.setPassword(value));
+    }, [dispath]);
 
     return (
         <form className={classNames(cls.LoginForm, {}, [])}>
             <MyInput
                 placeholder={t('Введите логин')}
-                onChange={(e) => setLogin(e)}
-                value={login}
+                onChange={onChangeUsername}
+                value={username}
             />
             <MyInput
                 placeholder={t('Введите пароль')}
-                onChange={(e) => setPassword(e)}
+                onChange={onChangePassword}
                 value={password}
             />
             <MyButton

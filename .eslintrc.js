@@ -44,7 +44,7 @@ module.exports = {
         'linebreak-style': 0,
         camelcase: 'off',
         'no-use-before-define': ['error', { variables: false }],
-        'max-len': ['error', { ignoreComments: true, code: 100 }],
+        'max-len': ['error', { ignoreComments: true, code: 120 }],
         'no-param-reassign': 'off',
     },
     globals: {
