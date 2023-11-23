@@ -41,3 +41,12 @@ MyButtonSquareBlack.args = {
 };
 
 MyButtonSquareBlack.decorators = [themeDecorator(Theme.DARK)];
+
+export const MyButtonDisabled = Template.bind({});
+MyButtonDisabled.args = {
+    size: SizeButton.XL,
+    theme: ThemeButton,
+    disabled: true,
+};
+
+MyButtonDisabled.decorators = [themeDecorator(Theme.DARK)];

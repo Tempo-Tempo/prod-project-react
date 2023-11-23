@@ -2,5 +2,7 @@
    "Войти": "Sing In",
    "Выйти": "Exit",
    "Введите логин": "Enter login",
-   "Введите пароль": "Enter password"
+   "Введите пароль": "Enter password",
+   "Форма авторизации": "Authorization form",
+   "Неверный логин или пароль": "Wrong login or password"
 }

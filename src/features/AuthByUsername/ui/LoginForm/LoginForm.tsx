@@ -6,11 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { loginActions, loginReduser } from 'features/AuthByUsername/model/slice/LoginSlice';
 import { getLoginData } from 'features/AuthByUsername/model/selectors/getLoginData/getLoginData';
+import { MyText, TextTheme } from 'shared/ui/text/MyText';
 import cls from './LoginForm.module.scss';
 import { loginByUsername } from '../../services/loginByUsername/loginByUsername';
 
 interface LoginFormProps {
-    isClose: () => void;
+    isClose?: () => void;
 }
 
 export const LoginFrom = ({ isClose }: LoginFormProps) => {
@@ -18,10 +19,12 @@ export const LoginFrom = ({ isClose }: LoginFormProps) => {
 
     const dispath = useDispatch();
 
-    const { password, username } = useSelector(getLoginData);
+    const {
+        password, username, isLoading, error,
+    } = useSelector(getLoginData);
 
     const singIn = useCallback(() => {
-        isClose();
+        // isClose();
         dispath(loginByUsername({ username, password }));
     }, [dispath, username, password]);
 
@@ -35,6 +38,7 @@ export const LoginFrom = ({ isClose }: LoginFormProps) => {
 
     return (
         <form className={classNames(cls.LoginForm, {}, [])}>
+            <MyText theme={TextTheme.primary} title={t('Форма авторизации')} />
             <MyInput
                 placeholder={t('Введите логин')}
                 onChange={onChangeUsername}
@@ -45,10 +49,12 @@ export const LoginFrom = ({ isClose }: LoginFormProps) => {
                 onChange={onChangePassword}
                 value={password}
             />
+            {error && <MyText theme={TextTheme.error} body={error} />}
             <MyButton
                 onClick={singIn}
                 theme={ThemeButton.OUTLINE}
                 className={cls.loginBtn}
+                disabled={isLoading}
             >
                 {t('Войти')}
 

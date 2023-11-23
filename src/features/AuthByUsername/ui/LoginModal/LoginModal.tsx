@@ -13,17 +13,18 @@ export const LoginModal = (props: LoginModalProps) => {
     const { className, isOpen, isClose } = props;
 
     // КОСТЫЛЕК НАДО БЫ ИСПРАВИТЬ
-    const [btnClose, setBtnClose] = useState<boolean>();
+    //  const [btnClose, setBtnClose] = useState<boolean>();
 
     return (
         <MyModal
             isOpen={isOpen}
             isClose={isClose}
-            btnClose={btnClose}
+            //   btnClose={btnClose}
             lazy
             className={classNames('', {}, [className])}
         >
-            <LoginFrom isClose={() => setBtnClose((prev) => !prev)} />
+            <LoginFrom />
         </MyModal>
     );
 };
+// isClose={() => setBtnClose((prev) => !prev)   }
