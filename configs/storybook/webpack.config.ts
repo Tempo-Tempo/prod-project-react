@@ -23,7 +23,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
     }
 
     const scssLoaders = scssLoader(true);
-    config.resolve?.modules?.push(paths.src);
+    config.resolve!.modules = [paths.src, 'node_modules'];
     config.resolve?.extensions?.push('.tsx', '.ts', '.js');
     config.module?.rules?.push(scssLoaders);
     config.module?.rules?.push({

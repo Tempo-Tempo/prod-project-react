@@ -18,6 +18,7 @@ const Template: ComponentStory<typeof MyText> = (args) => <MyText {...args} />;
 
 export const MyTextDefaultBlack = Template.bind({});
 MyTextDefaultBlack.args = {
+    title: 'Text',
     theme: TextTheme.primary,
 };
 
@@ -25,6 +26,7 @@ MyTextDefaultBlack.decorators = [themeDecorator(Theme.DARK)];
 
 export const MyTextErrorBlack = Template.bind({});
 MyTextErrorBlack.args = {
+    body: 'Text',
     theme: TextTheme.error,
 };
 
