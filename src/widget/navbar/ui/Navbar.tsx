@@ -1,6 +1,6 @@
 import { usersAcitons } from 'entities/MyUsers';
 import { getAuthDataUser } from 'entities/MyUsers/selectors/getAuthDataUser/getAuthDataUser';
-import { LoginModal } from 'features/AuthByUsername';
+import { LoginModalAsync } from 'features/AuthByUsername';
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -45,7 +45,7 @@ const Navbar = ({ className }: NavbarProps) => {
                     <MyButton theme={ThemeButton.OUTLINE_INVERTED} onClick={(e) => singIn(e)}>
                         {t('Войти')}
                     </MyButton>
-                    <LoginModal className="test" isOpen={isAuth} isClose={onCloseModal} />
+                    <LoginModalAsync className="test" isOpen={isAuth} isClose={onCloseModal} />
                 </div>
             )}
         </div>

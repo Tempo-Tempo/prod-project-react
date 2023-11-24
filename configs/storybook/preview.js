@@ -6,6 +6,7 @@ import { themeDecorator }
     from '../../src/shared/storybookDecorators/themeDecorators/themeDecorator';
 import { routerDecorator }
     from '../../src/shared/storybookDecorators/routerDecorators/routerDecorator';
+// import { storeDecorator } from '../../src/shared/storybookDecorators/storeDecorators';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -20,3 +21,4 @@ export const parameters = {
 addDecorator(styleDecorator);
 addDecorator(themeDecorator(Theme.LIGHT));
 addDecorator(routerDecorator);
+// addDecorator(storeDecorator);

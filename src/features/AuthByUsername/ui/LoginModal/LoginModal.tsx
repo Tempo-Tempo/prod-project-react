@@ -8,8 +8,7 @@ interface LoginModalProps {
    isOpen: boolean,
    isClose: () => void;
 }
-
-export const LoginModal = (props: LoginModalProps) => {
+const LoginModal = (props: LoginModalProps) => {
     const { className, isOpen, isClose } = props;
 
     // КОСТЫЛЕК НАДО БЫ ИСПРАВИТЬ
@@ -28,3 +27,4 @@ export const LoginModal = (props: LoginModalProps) => {
     );
 };
 // isClose={() => setBtnClose((prev) => !prev)   }
+export default LoginModal;

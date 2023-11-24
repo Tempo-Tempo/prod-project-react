@@ -20,7 +20,7 @@ export const loginByUsername = createAsyncThunk<User, userDataProps, { rejectVal
             localStorage.setItem(USER_LOCALSTOREAGE_KEY, JSON.stringify(responce.data));
             return responce.data;
         } catch {
-            return thunkApi.rejectWithValue('Неверный логин или пароль');
+            return thunkApi.rejectWithValue('error');
         }
     },
 

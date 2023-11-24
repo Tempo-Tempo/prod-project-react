@@ -49,7 +49,7 @@ export const LoginFrom = ({ isClose }: LoginFormProps) => {
                 onChange={onChangePassword}
                 value={password}
             />
-            {error && <MyText theme={TextTheme.error} body={error} />}
+            {error && <MyText theme={TextTheme.error} body={t('Неверный логин или пароль')} />}
             <MyButton
                 onClick={singIn}
                 theme={ThemeButton.OUTLINE}

@@ -3,7 +3,7 @@ import { UserScheme } from 'entities/MyUsers';
 import { LoginScheme } from 'features/AuthByUsername';
 
 export interface StateSchema {
-   counter: CounterScheme;
+   counter?: CounterScheme;
    user?: UserScheme;
    loginForm?: LoginScheme;
 }
