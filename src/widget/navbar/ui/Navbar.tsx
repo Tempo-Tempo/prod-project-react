@@ -1,10 +1,11 @@
 import { usersAcitons } from 'entities/MyUsers';
 import { getAuthDataUser } from 'entities/MyUsers/selectors/getAuthDataUser/getAuthDataUser';
-import { LoginModalAsync } from 'features/AuthByUsername';
-import React, { useCallback, useState } from 'react';
+import { LoginModal } from 'features/AuthByUsername';
+import React, { Suspense, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { SpinnerLoader } from 'shared/spinnerLoader/spinnerLoader';
 import { MyButton, ThemeButton } from 'shared/ui/MyButton/MyButton';
 import cls from './Navbar.module.scss';
 
@@ -45,7 +46,10 @@ const Navbar = ({ className }: NavbarProps) => {
                     <MyButton theme={ThemeButton.OUTLINE_INVERTED} onClick={(e) => singIn(e)}>
                         {t('Войти')}
                     </MyButton>
-                    <LoginModalAsync className="test" isOpen={isAuth} isClose={onCloseModal} />
+                    <Suspense fallback={<SpinnerLoader />}>
+                        <LoginModal className="test" isOpen={isAuth} isClose={onCloseModal} />
+                    </Suspense>
+
                 </div>
             )}
         </div>

@@ -2,26 +2,33 @@ import { MyButton, ThemeButton } from 'shared/ui/MyButton/MyButton';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { MyInput } from 'shared/ui/MyInput/MyInput';
-import { useDispatch, useSelector } from 'react-redux';
-import { useCallback } from 'react';
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useCallback, useEffect } from 'react';
 import { loginActions, loginReduser } from 'features/AuthByUsername/model/slice/LoginSlice';
 import { getLoginData } from 'features/AuthByUsername/model/selectors/getLoginData/getLoginData';
 import { MyText, TextTheme } from 'shared/ui/text/MyText';
+import { ReduxStoreWithReducerManaget } from 'app/providers/StoreProvider';
 import cls from './LoginForm.module.scss';
 import { loginByUsername } from '../../services/loginByUsername/loginByUsername';
 
-interface LoginFormProps {
+export interface LoginFormProps {
     isClose?: () => void;
 }
-
-export const LoginFrom = ({ isClose }: LoginFormProps) => {
+const LoginFrom = ({ isClose }: LoginFormProps) => {
     const { t } = useTranslation('navbar');
-
-    const dispath = useDispatch();
-
+    const store = useStore() as ReduxStoreWithReducerManaget;
     const {
         password, username, isLoading, error,
     } = useSelector(getLoginData);
+
+    useEffect(() => {
+        store.reducerManager.add('loginForm', loginReduser);
+
+        return () => {
+            store.reducerManager.remove('loginForm');
+        };
+    }, []);
+    const dispath = useDispatch();
 
     const singIn = useCallback(() => {
         // isClose();
@@ -62,3 +69,5 @@ export const LoginFrom = ({ isClose }: LoginFormProps) => {
         </form>
     );
 };
+
+export default LoginFrom;

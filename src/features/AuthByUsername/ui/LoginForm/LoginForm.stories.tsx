@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProviders';
 import { themeDecorator } from 'shared/storybookDecorators/themeDecorators/themeDecorator';
 import { storeDecorator } from 'shared/storybookDecorators/storeDecorators/storeDecorator';
-import { LoginFrom } from './LoginForm';
+import LoginFrom from './LoginForm';
 
 export default {
     title: 'entities/LoginFrom',
