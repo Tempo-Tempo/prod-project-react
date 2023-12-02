@@ -8,7 +8,7 @@ import {
 import { useCallback } from 'react';
 import { loginActions, loginReduser } from 'features/AuthByUsername/model/slice/LoginSlice';
 import { MyText, TextTheme } from 'shared/ui/text/MyText';
-import { DynamicAsyncReducer } from 'shared/lib/components/DynamicAsyncReducer/DynamicAsyncReducer';
+import { DynamicAsyncReducer, ReducersList } from 'shared/lib/components/DynamicAsyncReducer/DynamicAsyncReducer';
 import { getErrorData } from '../../model/selectors/getErrorData/getErrorData';
 import { getPasswordData } from '../../model/selectors/getPasswordData/getPasswrodData';
 import cls from './LoginForm.module.scss';
@@ -19,6 +19,11 @@ import { getIsLoadingData } from '../../model/selectors/getIsLoadingData/getIsLo
 export interface LoginFormProps {
     isClose?: () => void;
 }
+
+const initialReducers: ReducersList = {
+    loginForm: loginReduser,
+};
+
 const LoginFrom = ({ isClose }: LoginFormProps) => {
     const { t } = useTranslation('navbar');
     const password = useSelector(getPasswordData);
@@ -41,7 +46,7 @@ const LoginFrom = ({ isClose }: LoginFormProps) => {
     }, [dispath]);
 
     return (
-        <DynamicAsyncReducer removeAfterUnmounted name="loginForm" reducer={loginReduser}>
+        <DynamicAsyncReducer reducers={initialReducers}>
             <form className={classNames(cls.LoginForm, {}, [])}>
                 <MyText theme={TextTheme.primary} title={t('Форма авторизации')} />
                 <MyInput

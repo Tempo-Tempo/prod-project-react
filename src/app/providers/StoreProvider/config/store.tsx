@@ -1,12 +1,12 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/MyCounter/model/slice/counterSlice';
 import { usersReducers } from 'entities/MyUsers';
-import { loginReduser } from 'features/AuthByUsername/model/slice/LoginSlice';
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './StoreManager';
 
-export function CreateReduxStore(initialState?: StateSchema) {
+export function CreateReduxStore(initialState?: StateSchema, asyncReducer?: ReducersMapObject<StateSchema>) {
     const rootReducers: ReducersMapObject<StateSchema> = {
+        ...asyncReducer,
         counter: counterReducer,
         user: usersReducers,
     };

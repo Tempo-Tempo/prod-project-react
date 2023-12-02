@@ -3,32 +3,38 @@ import { useDispatch, useStore } from 'react-redux';
 import { ReduxStoreWithReducerManaget } from 'app/providers/StoreProvider';
 import { StateSchemaKeys } from 'app/providers/StoreProvider/config/StateSchema';
 import { Reducer } from '@reduxjs/toolkit';
+import { loginReduser } from 'features/AuthByUsername/model/slice/LoginSlice';
+
+export type ReducersList = {
+    [name in StateSchemaKeys]?: Reducer;
+}
+
+type ReducersListEntry = [StateSchemaKeys, Reducer];
 
 interface DynamicAsyncReducerProps {
    children?: ReactNode
-   name: StateSchemaKeys
-   reducer: Reducer
-   removeAfterUnmounted: boolean
+   reducers: ReducersList
 }
 
 export const DynamicAsyncReducer: FC<DynamicAsyncReducerProps> = (props) => {
     const store = useStore() as ReduxStoreWithReducerManaget;
     const {
-        children, name, reducer, removeAfterUnmounted,
+        children, reducers,
     } = props;
     const dispath = useDispatch();
 
     useEffect(() => {
-        store.reducerManager.add(name, reducer);
-        console.log(store.reducerManager);
-        dispath({ type: `@INIT ${name} reducer` });
+        Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
+            console.log(name, reducer);
+            store.reducerManager.add(name, reducer);
+            dispath({ type: `@INIT ${name} reducer` });
+        });
 
         return () => {
-            if (removeAfterUnmounted) {
-                console.log('suka');
+            Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
                 store.reducerManager.remove(name);
                 dispath({ type: `@DESTROY ${name} reducer` });
-            }
+            });
         };
     }, []);
 
