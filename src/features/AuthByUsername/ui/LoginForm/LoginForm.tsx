@@ -9,6 +9,7 @@ import { useCallback } from 'react';
 import { loginActions, loginReduser } from 'features/AuthByUsername/model/slice/LoginSlice';
 import { MyText, TextTheme } from 'shared/ui/text/MyText';
 import { DynamicAsyncReducer, ReducersList } from 'shared/lib/components/DynamicAsyncReducer/DynamicAsyncReducer';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getErrorData } from '../../model/selectors/getErrorData/getErrorData';
 import { getPasswordData } from '../../model/selectors/getPasswordData/getPasswrodData';
 import cls from './LoginForm.module.scss';
@@ -17,7 +18,7 @@ import { getUsernameData } from '../../model/selectors/getUsernameData/getUserna
 import { getIsLoadingData } from '../../model/selectors/getIsLoadingData/getIsLoadingData';
 
 export interface LoginFormProps {
-    isClose?: () => void;
+    isClose: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -30,20 +31,22 @@ const LoginFrom = ({ isClose }: LoginFormProps) => {
     const username = useSelector(getUsernameData);
     const isLoading = useSelector(getIsLoadingData);
     const error = useSelector(getErrorData);
-    const dispath = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const singIn = useCallback(() => {
-        // isClose();
-        dispath(loginByUsername({ username, password }));
-    }, [dispath, username, password]);
+    const singIn = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }));
+        if (result.meta.requestStatus === 'fulfilled') {
+            isClose();
+        }
+    }, [dispatch, username, password, isClose]);
 
     const onChangeUsername = useCallback((value) => {
-        dispath(loginActions.setUsername(value));
+        dispatch(loginActions.setUsername(value));
     }, []);
 
     const onChangePassword = useCallback((value) => {
-        dispath(loginActions.setPassword(value));
-    }, [dispath]);
+        dispatch(loginActions.setPassword(value));
+    }, [dispatch]);
 
     return (
         <DynamicAsyncReducer reducers={initialReducers}>

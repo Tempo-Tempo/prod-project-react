@@ -21,7 +21,7 @@ export const LoginModal = (props: LoginModalProps) => {
             lazy
             className={classNames('', {}, [className])}
         >
-            <LoginFormAsync />
+            <LoginFormAsync isClose={isClose} />
         </MyModal>
     );
 };

@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { RoutePath } from 'shared/routerConfig/routerConfig';
 import AboutIcon from 'shared/assets/icons/about-20-20.svg';
 import MainIcon from 'shared/assets/icons/main-20-20.svg';
+import { SidebarItem } from 'widget/sidebar/sidebarItem/SidebarItem';
+import { SidebarItemsList } from 'widget/sidebar/sidebarItem/model/items';
 import cls from './Sidebar.module.scss';
 
 export interface SidebarProps {
@@ -27,6 +29,10 @@ export const Sidebar = ({ className }: SidebarProps) => {
             className={classNames(cls.Sidebar, { [cls.Collapsed]: collapsed }, [className])}
         >
             <div className={cls.Links}>
+                {SidebarItemsList.map((item) => (
+                    <SidebarItem item={item} collapsed={collapsed} />
+                ))}
+
                 <AppLink
                     theme={AppThemeLinks.SECONDARY}
                     className={cls.mainLink}

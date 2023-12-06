@@ -19,3 +19,7 @@ export function CreateReduxStore(initialState?: StateSchema, asyncReducer?: Redu
     store.reducerManager = ReducerManager;
     return store;
 }
+
+// Возвращаем тип из функции, а в [] уточняем какой конкретно
+
+export type DispathStoreType = ReturnType<typeof CreateReduxStore>['dispatch'];
