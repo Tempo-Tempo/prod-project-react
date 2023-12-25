@@ -5,7 +5,7 @@ import { MyInput } from 'shared/ui/MyInput/MyInput';
 import {
     useSelector, useDispatch,
 } from 'react-redux';
-import { useCallback } from 'react';
+import { useCallback, memo } from 'react';
 import { loginActions, loginReduser } from 'features/AuthByUsername/model/slice/LoginSlice';
 import { MyText, TextTheme } from 'shared/ui/text/MyText';
 import { DynamicAsyncReducer, ReducersList } from 'shared/lib/components/DynamicAsyncReducer/DynamicAsyncReducer';
@@ -25,7 +25,7 @@ const initialReducers: ReducersList = {
     loginForm: loginReduser,
 };
 
-const LoginFrom = ({ isClose }: LoginFormProps) => {
+const LoginFrom = memo(({ isClose }: LoginFormProps) => {
     const { t } = useTranslation('navbar');
     const password = useSelector(getPasswordData);
     const username = useSelector(getUsernameData);
@@ -76,6 +76,6 @@ const LoginFrom = ({ isClose }: LoginFormProps) => {
         </DynamicAsyncReducer>
 
     );
-};
+});
 
 export default LoginFrom;

@@ -1,7 +1,9 @@
 import { usersAcitons } from 'entities/MyUsers';
 import { getAuthDataUser } from 'entities/MyUsers/selectors/getAuthDataUser/getAuthDataUser';
 import { LoginModal } from 'features/AuthByUsername';
-import React, { Suspense, useCallback, useState } from 'react';
+import React, {
+    Suspense, useCallback, useState, memo,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -13,7 +15,7 @@ interface NavbarProps {
   className?: string;
 }
 
-const Navbar = ({ className }: NavbarProps) => {
+const Navbar = memo(({ className }: NavbarProps) => {
     const [isAuth, setIsAuth] = useState(false);
     const { t } = useTranslation('navbar');
     const authData = useSelector(getAuthDataUser);
@@ -54,6 +56,6 @@ const Navbar = ({ className }: NavbarProps) => {
             )}
         </div>
     );
-};
+});
 
 export { Navbar };

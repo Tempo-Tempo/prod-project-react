@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { MyModal } from 'shared/ui/MyModal/MyModal';
+import { memo } from 'react';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
 interface LoginModalProps {
@@ -7,7 +8,7 @@ interface LoginModalProps {
    isOpen: boolean,
    isClose: () => void;
 }
-export const LoginModal = (props: LoginModalProps) => {
+export const LoginModal = memo((props: LoginModalProps) => {
     const { className, isOpen, isClose } = props;
 
     // КОСТЫЛЕК НАДО БЫ ИСПРАВИТЬ
@@ -24,5 +25,5 @@ export const LoginModal = (props: LoginModalProps) => {
             <LoginFormAsync isClose={isClose} />
         </MyModal>
     );
-};
+});
 // isClose={() => setBtnClose((prev) => !prev)   }
