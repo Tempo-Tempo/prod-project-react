@@ -1,4 +1,4 @@
-import webpack, { RuleSetRule } from 'webpack';
+import webpack, { DefinePlugin, RuleSetRule } from 'webpack';
 import path from 'path';
 import { BuildPath } from '../build/types/config';
 import { scssLoader } from '../build/loaders/scssLoader';
@@ -30,5 +30,9 @@ export default ({ config }: {config: webpack.Configuration}) => {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
     });
+    config.plugins?.push(new DefinePlugin({
+        __API__: JSON.stringify(''),
+        __IS_DEV__: JSON.stringify('true'),
+    }));
     return config;
 };
