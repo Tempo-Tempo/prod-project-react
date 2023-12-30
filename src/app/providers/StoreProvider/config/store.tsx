@@ -4,6 +4,7 @@ import { usersReducers } from 'entities/MyUsers';
 import { $api } from 'shared/api/api';
 import { NavigateOptions } from 'react-router-dom';
 import { To } from 'history';
+import { profileReducers } from 'entities/MyProfile';
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './StoreManager';
 
@@ -16,6 +17,7 @@ export function CreateReduxStore(
         ...asyncReducer,
         counter: counterReducer,
         user: usersReducers,
+        profile: profileReducers,
     };
     const ReducerManager = createReducerManager(rootReducers);
     const store = configureStore({
@@ -33,5 +35,4 @@ export function CreateReduxStore(
 }
 
 // Возвращаем тип из функции, а в [] уточняем какой конкретно
-
 export type DispathStoreType = ReturnType<typeof CreateReduxStore>['dispatch'];
