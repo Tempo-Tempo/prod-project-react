@@ -7,7 +7,7 @@ interface ReloadButtonProps {
     className?: string,
 }
 
-export const ReloadButton = ({ className }: ReloadButtonProps) => {
+export const ReloadButton = ({ className = '' }: ReloadButtonProps) => {
     const { t } = useTranslation('error');
 
     const reloadPage = () => {

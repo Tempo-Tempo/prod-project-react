@@ -9,6 +9,8 @@ describe('test full loginForm', () => {
                 username: 'admin',
                 password: '123',
             },
+            user: {},
+            counter: { value: 0 },
         };
         expect(getLoginData(state as StateSchema)).toEqual({
             isLoading: true,

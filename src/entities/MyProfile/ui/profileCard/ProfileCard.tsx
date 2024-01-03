@@ -10,7 +10,7 @@ interface profileCardProps {
    className?: string,
 }
 
-export const ProfileCard = ({ className }: profileCardProps) => {
+export const ProfileCard = ({ className = '' }: profileCardProps) => {
     const { t } = useTranslation('profile');
     const profileData = useSelector(getProfileData);
     return (

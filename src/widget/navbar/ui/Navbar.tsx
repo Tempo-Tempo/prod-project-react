@@ -15,7 +15,7 @@ interface NavbarProps {
   className?: string;
 }
 
-const Navbar = memo(({ className }: NavbarProps) => {
+const Navbar = memo(({ className = '' }: NavbarProps) => {
     const [isAuth, setIsAuth] = useState(false);
     const { t } = useTranslation('navbar');
     const authData = useSelector(getAuthDataUser);

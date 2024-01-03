@@ -7,9 +7,9 @@ import { Portal } from 'shared/Portal/Portal';
 import cls from './MyModal.module.scss';
 
 interface MyModalProps {
-   className?: string,
+   className: string,
    children: ReactNode,
-   isOpen?: boolean,
+   isOpen?: boolean | undefined,
    btnClose?: boolean,
    lazy?: boolean,
    isClose?: () => void;

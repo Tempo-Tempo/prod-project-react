@@ -18,12 +18,12 @@ const Template: ComponentStory<typeof MyButton> = (args) => <MyButton {...args} 
 
 export const MyButtonDefault = Template.bind({});
 MyButtonDefault.args = {
-    theme: ThemeButton,
+    theme: ThemeButton.OUTLINE,
 };
 
 export const MyButtonDefaultBlack = Template.bind({});
 MyButtonDefaultBlack.args = {
-    theme: ThemeButton,
+    theme: ThemeButton.CLEAR,
 };
 
 MyButtonDefaultBlack.decorators = [themeDecorator(Theme.DARK)];
@@ -31,13 +31,13 @@ MyButtonDefaultBlack.decorators = [themeDecorator(Theme.DARK)];
 export const MyButtonSquare = Template.bind({});
 MyButtonSquare.args = {
     size: SizeButton.XL,
-    theme: ThemeButton,
+    theme: ThemeButton.BACKGROUND,
 };
 
 export const MyButtonSquareBlack = Template.bind({});
 MyButtonSquareBlack.args = {
     size: SizeButton.XL,
-    theme: ThemeButton,
+    theme: ThemeButton.BACKGROUND_INVERTED,
 };
 
 MyButtonSquareBlack.decorators = [themeDecorator(Theme.DARK)];
@@ -45,7 +45,7 @@ MyButtonSquareBlack.decorators = [themeDecorator(Theme.DARK)];
 export const MyButtonDisabled = Template.bind({});
 MyButtonDisabled.args = {
     size: SizeButton.XL,
-    theme: ThemeButton,
+    theme: ThemeButton.OUTLINE_INVERTED,
     disabled: true,
 };
 

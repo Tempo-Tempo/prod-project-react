@@ -46,6 +46,7 @@ module.exports = {
         'no-use-before-define': ['error', { variables: false }],
         'max-len': ['error', { ignoreComments: true, code: 120 }],
         'no-param-reassign': 'off',
+        'no-undef': 'off',
     },
     globals: {
         __IS_DEV__: true,

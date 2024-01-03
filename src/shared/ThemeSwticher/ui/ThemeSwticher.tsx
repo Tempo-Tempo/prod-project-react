@@ -10,7 +10,7 @@ export interface ThemeSwticherProps {
   className?: string;
 }
 
-export const ThemeSwticher = memo(({ className }: ThemeSwticherProps) => {
+export const ThemeSwticher = memo(({ className = '' }: ThemeSwticherProps) => {
     const { theme, toggleTheme } = useTheme();
     return (
         <MyButton

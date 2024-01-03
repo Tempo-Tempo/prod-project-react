@@ -1,6 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Theme } from 'app/providers/ThemeProviders';
-import { themeDecorator } from 'shared/storybookDecorators/themeDecorators/themeDecorator';
 import { storeDecorator } from 'shared/storybookDecorators/storeDecorators/storeDecorator';
 import LoginFrom from './LoginForm';
 
@@ -21,19 +19,19 @@ export const MyLoginForm = Template.bind({});
 MyLoginForm.args = {};
 
 MyLoginForm.decorators = [storeDecorator({
-    loginForm: { username: 'admin', password: '123' },
+    loginForm: { username: 'admin', password: '123' }, counter: { value: 0 }, user: { authData: { username: 'admin', id: '1' } },
 })];
 
 export const MyLoginFormErr = Template.bind({});
 MyLoginFormErr.args = {};
 
 MyLoginFormErr.decorators = [storeDecorator({
-    loginForm: { username: 'admin', password: '123', error: 'Error' },
+    loginForm: { username: 'admin', password: '123' }, counter: { value: 0 }, user: { authData: { username: 'admin', id: '1' } },
 })];
 
 export const MyLoginFormLoading = Template.bind({});
 MyLoginFormLoading.args = {};
 
 MyLoginFormLoading.decorators = [storeDecorator({
-    loginForm: { username: 'admin', password: '123', isLoading: true },
+    loginForm: { username: 'admin', password: '123' }, counter: { value: 0 }, user: { authData: { username: 'admin', id: '1' } },
 })];

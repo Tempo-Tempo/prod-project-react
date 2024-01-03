@@ -21,6 +21,7 @@ MainPageDark.args = {};
 MainPageDark.decorators = [themeDecorator(Theme.DARK)];
 MainPageDark.decorators = [storeDecorator({
     counter: { value: 0 },
+    user: {},
 })];
 
 export const MainPageLight = Template.bind({});
@@ -28,4 +29,5 @@ MainPageLight.args = {};
 
 MainPageLight.decorators = [storeDecorator({
     counter: { value: 0 },
+    user: {},
 })];

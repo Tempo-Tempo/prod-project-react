@@ -13,19 +13,21 @@ export function CreateReduxStore(
     asyncReducer?: ReducersMapObject<StateSchema>,
     navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
+    const extraArg = { api: $api, navigate };
+
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducer,
         counter: counterReducer,
         user: usersReducers,
-        profile: profileReducers,
     };
     const ReducerManager = createReducerManager(rootReducers);
     const store = configureStore({
-        reducer: ReducerManager.reduce,
+        // @ts-ignore
+        reducer: ReducerManager.reduce as ReducersMapObject<StateSchema>,
         preloadedState: initialState,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             thunk: {
-                extraArgument: { api: $api, navigate },
+                extraArgument: extraArg,
             },
         }),
     });

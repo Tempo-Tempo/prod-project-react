@@ -19,7 +19,7 @@ export const loginByUsername = createAsyncThunk<User, userDataProps, ThunkConfig
             }
             dispatch(usersAcitons.setAuthData(responce.data));
             localStorage.setItem(USER_LOCALSTOREAGE_KEY, JSON.stringify(responce.data));
-            extra.navigate('/about');
+            extra.navigate?.('/about');
             return responce.data;
         } catch {
             return rejectWithValue('error');

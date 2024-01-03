@@ -1,3 +1,3 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 
-export const getPasswordData = (state: StateSchema) => state?.loginForm?.password;
+export const getPasswordData = (state: StateSchema) => state?.loginForm?.password || '';

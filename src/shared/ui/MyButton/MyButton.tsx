@@ -14,6 +14,7 @@ export enum SizeButton {
    M = 'size_m',
    L = 'size_l',
    XL = 'size_xl',
+   None = ''
   }
 
 interface ButtonsProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -26,7 +27,7 @@ interface ButtonsProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const MyButton = memo((props: ButtonsProps) => {
     const {
-        className, theme, children, size, disabled, ...otherProps
+        className = '', theme = ThemeButton.OUTLINE, children, size = SizeButton.None, disabled, ...otherProps
     } = props;
     return (
         <button

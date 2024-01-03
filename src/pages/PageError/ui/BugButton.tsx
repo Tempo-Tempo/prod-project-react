@@ -6,7 +6,7 @@ interface BugButtonProps {
    className?: string,
 }
 
-export const BugButton = ({ className }: BugButtonProps) => {
+export const BugButton = ({ className = '' }: BugButtonProps) => {
     const [error, setError] = useState(false);
     const { t } = useTranslation('navbar');
 

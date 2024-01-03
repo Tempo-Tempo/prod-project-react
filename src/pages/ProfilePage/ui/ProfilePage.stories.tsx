@@ -17,9 +17,9 @@ const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...
 export const ProfilePageDark = Template.bind({});
 ProfilePageDark.args = {};
 
-ProfilePageDark.decorators = [storeDecorator({})];
+ProfilePageDark.decorators = [storeDecorator({ counter: { value: 0 }, user: { authData: { username: 'admin', id: '1' } } })];
 
 export const ProfilePageLight = Template.bind({});
 ProfilePageLight.args = {};
 
-ProfilePageLight.decorators = [storeDecorator({}), themeDecorator(Theme.DARK)];
+ProfilePageLight.decorators = [storeDecorator({ counter: { value: 0 }, user: { authData: { username: 'admin', id: '1' } } }), themeDecorator(Theme.DARK)];

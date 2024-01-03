@@ -6,7 +6,7 @@ interface PageLoaderProps {
    className?: string,
 }
 
-export const PageLoader = ({ className }: PageLoaderProps) => (
+export const PageLoader = ({ className = '' }: PageLoaderProps) => (
     <div>
         <div className={classNames(cls.PageLoader, {}, [className])}>
             <SpinnerLoader />

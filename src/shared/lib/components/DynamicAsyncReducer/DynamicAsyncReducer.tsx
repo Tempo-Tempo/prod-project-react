@@ -8,8 +8,6 @@ export type ReducersList = {
     [name in StateSchemaKeys]?: Reducer;
 }
 
-type ReducersListEntry = [StateSchemaKeys, Reducer];
-
 interface DynamicAsyncReducerProps {
    children?: ReactNode
    reducers: ReducersList
@@ -23,14 +21,14 @@ export const DynamicAsyncReducer: FC<DynamicAsyncReducerProps> = (props) => {
     const dispath = useDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
-            store.reducerManager.add(name, reducer);
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as StateSchemaKeys, reducer);
             dispath({ type: `@INIT ${name} reducer` });
         });
 
         return () => {
-            Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
-                store.reducerManager.remove(name);
+            Object.entries(reducers).forEach(([name, reducer]) => {
+                store.reducerManager.remove(name as StateSchemaKeys);
                 dispath({ type: `@DESTROY ${name} reducer` });
             });
         };

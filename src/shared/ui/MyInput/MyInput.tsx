@@ -17,7 +17,7 @@ export const MyInput = memo((props: MyInputProps) => {
         typeInput = 'text', value, onChange, autoFocus, ...otherProps
     } = props;
 
-    const inputRef = useRef<HTMLInputElement>();
+    const inputRef = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
 
     useEffect(() => {

@@ -6,20 +6,20 @@ import { MyCounter } from './MyCounter';
 describe('MyCounter test component', () => {
     test('title value', () => {
         renderAnyComponent(<MyCounter />, {
-            initialState: { counter: { value: 10 } },
+            initialState: { counter: { value: 10 }, user: { authData: { username: 'admin', id: '1' } } },
         });
         expect(screen.getByTestId('value-title')).toHaveTextContent('10');
     });
     test('increment value', () => {
         renderAnyComponent(<MyCounter />, {
-            initialState: { counter: { value: 10 } },
+            initialState: { counter: { value: 10 }, user: { authData: { username: 'admin', id: '1' } } },
         });
         userEvent.click(screen.getByTestId('increment-btn'));
         expect(screen.getByTestId('value-title')).toHaveTextContent('11');
     });
     test('decrement value', () => {
         renderAnyComponent(<MyCounter />, {
-            initialState: { counter: { value: 10 } },
+            initialState: { counter: { value: 10 }, user: { authData: { username: 'admin', id: '1' } } },
         });
         userEvent.click(screen.getByTestId('decrement-btn'));
         expect(screen.getByTestId('value-title')).toHaveTextContent('9');

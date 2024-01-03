@@ -11,8 +11,8 @@ import { NavigateOptions } from 'react-router-dom';
 import { To } from 'history';
 
 export interface StateSchema {
-   counter?: CounterScheme;
-   user?: UserScheme;
+   counter: CounterScheme;
+   user: UserScheme;
 
    // async reducers
    loginForm?: LoginScheme;
@@ -33,7 +33,7 @@ export interface ReduxStoreWithReducerManaget extends ToolkitStore<StateSchema> 
 
 export interface ReduxExtraArg {
    api: AxiosInstance,
-   navigate: (to: To, options?: NavigateOptions) => void,
+   navigate?: (to: To, options?: NavigateOptions) => void,
 }
 
 export interface ThunkConfig<T> {

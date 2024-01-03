@@ -8,7 +8,7 @@ interface LanguageSwitcherProps {
     collapsed: boolean,
 }
 
-export const LanguageSwitcher = memo(({ className, collapsed }: LanguageSwitcherProps) => {
+export const LanguageSwitcher = memo(({ className = '', collapsed }: LanguageSwitcherProps) => {
     const { t, i18n } = useTranslation();
 
     const toggle = async () => {

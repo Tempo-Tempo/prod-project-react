@@ -7,7 +7,7 @@ interface PageErrorProps {
    className?: string,
 }
 
-export const PageError = ({ className }: PageErrorProps) => {
+export const PageError = ({ className = '' }: PageErrorProps) => {
     const { t } = useTranslation('error');
     return (
         <div className={classNames(cls.Page_error_wrapper, {}, [className])}>
