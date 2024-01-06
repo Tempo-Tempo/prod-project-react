@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ReduxExtraArg, ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema';
+import { ThunkConfig } from 'app/providers/StoreProvider/config/StateSchema';
 import { User, usersAcitons } from 'entities/MyUsers';
 import { USER_LOCALSTOREAGE_KEY } from 'shared/const/localStoreage';
 
@@ -13,7 +13,7 @@ export const loginByUsername = createAsyncThunk<User, userDataProps, ThunkConfig
     async (userData: userDataProps, thunkApi) => {
         const { extra, dispatch, rejectWithValue } = thunkApi;
         try {
-            const responce = await extra.api.post('/login', userData);
+            const responce = await extra.api.post('http://localhost:8000/login', userData);
             if (!responce.data) {
                 throw new Error();
             }

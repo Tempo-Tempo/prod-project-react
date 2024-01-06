@@ -1,10 +1,12 @@
-import { configureStore, getDefaultMiddleware, ReducersMapObject } from '@reduxjs/toolkit';
+import {
+    CombinedState, configureStore, getDefaultMiddleware, Reducer, ReducersMapObject,
+} from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/MyCounter/model/slice/counterSlice';
 import { usersReducers } from 'entities/MyUsers';
 import { $api } from 'shared/api/api';
 import { NavigateOptions } from 'react-router-dom';
 import { To } from 'history';
-import { profileReducers } from 'entities/MyProfile';
+
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './StoreManager';
 
@@ -22,8 +24,7 @@ export function CreateReduxStore(
     };
     const ReducerManager = createReducerManager(rootReducers);
     const store = configureStore({
-        // @ts-ignore
-        reducer: ReducerManager.reduce as ReducersMapObject<StateSchema>,
+        reducer: ReducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         preloadedState: initialState,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             thunk: {

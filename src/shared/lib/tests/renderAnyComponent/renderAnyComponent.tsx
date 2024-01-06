@@ -17,13 +17,12 @@ export function renderAnyComponent(
 ) {
     const { initialRoute = '/', initialState } = options;
     return render(
-        <StoreProvider initialState={initialState}>
-            <MemoryRouter initialEntries={[initialRoute]}>
+        <MemoryRouter initialEntries={[initialRoute]}>
+            <StoreProvider initialState={initialState}>
                 <I18nextProvider i18n={i18nTests}>
                     {component}
                 </I18nextProvider>
-            </MemoryRouter>
-        </StoreProvider>,
-
+            </StoreProvider>
+        </MemoryRouter>,
     );
 }
