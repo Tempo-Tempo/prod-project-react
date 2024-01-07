@@ -32,3 +32,8 @@
     transform-origin: 0 0; /* see note above */
     backface-visibility: hidden;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+}
