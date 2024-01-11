@@ -10,11 +10,12 @@ interface MyInputProps extends HTMLInputProps {
    value?: string,
    autoFocus?: boolean,
    onChange?: (value: string) => void,
+   disabled?: boolean,
 }
 
 export const MyInput = memo((props: MyInputProps) => {
     const {
-        typeInput = 'text', value, onChange, autoFocus, ...otherProps
+        typeInput = 'text', value, onChange, autoFocus, disabled, ...otherProps
     } = props;
 
     const inputRef = useRef<HTMLInputElement>(null);
@@ -47,6 +48,7 @@ export const MyInput = memo((props: MyInputProps) => {
             onFocus={onFocus}
             onBlur={onBlur}
             onChange={(e) => onChangeHandler(e)}
+            disabled={disabled}
             {...otherProps}
         />
     );

@@ -1,4 +1,4 @@
-import { fetchProfileData, getProfileIsLoading } from 'entities/MyProfile';
+import { fetchProfileData, getProfileForm, getProfileIsLoading } from 'entities/MyProfile';
 import { profileReducers } from 'entities/MyProfile/model/slice/profileSlice';
 import { useEffect } from 'react';
 import { DynamicAsyncReducer, ReducersList } from 'shared/lib/components/DynamicAsyncReducer/DynamicAsyncReducer';
@@ -19,7 +19,7 @@ const reducer: ReducersList = {
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
     const dispatch = useAppDispatch();
-    const profileData = useSelector(getProfileData);
+    const profileForm = useSelector(getProfileForm);
     const profileError = useSelector(getProfileError);
     const profileIsLoading = useSelector(getProfileIsLoading);
     useEffect(() => {
@@ -28,7 +28,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     return (
         <DynamicAsyncReducer reducers={reducer}>
             <ProfilePageHeader />
-            <ProfileCard profileData={profileData} profileError={profileError} isLoading={profileIsLoading} />
+            <ProfileCard profileData={profileForm} profileError={profileError} isLoading={profileIsLoading} />
         </DynamicAsyncReducer>
 
     );

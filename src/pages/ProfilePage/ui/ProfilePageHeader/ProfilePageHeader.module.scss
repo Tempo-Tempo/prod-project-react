@@ -1,7 +1,12 @@
 .header_card {
     display: flex;
+    margin-left: auto;
 }
 
 .editBtn {
     margin-left: auto;
+}
+
+.cancelBtn {
+    margin-right: 10px;
 }

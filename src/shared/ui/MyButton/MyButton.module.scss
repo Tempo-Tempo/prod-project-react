@@ -29,6 +29,13 @@
     background: none;
 }
 
+.outline_red {
+    padding: 10px;
+    border: 1px solid var(--red-ligth-color);
+    color: var(--red-dark-color);
+    background: none;
+}
+
 .outline_inverted {
     padding: 10px;
     border: 1px solid var(--inverted-secondary-color);
