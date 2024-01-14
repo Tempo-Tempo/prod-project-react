@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { ThemeButton, MyButton } from 'shared/ui/MyButton/MyButton';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly, profileActions } from 'entities/MyProfile';
+import { getProfileReadonly, profileActions, updateProfileData } from 'entities/MyProfile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useCallback } from 'react';
 import cls from './ProfilePageHeader.module.scss';
@@ -27,6 +27,7 @@ export const ProfilePageHeader = ({ className = '' }: ProfilePageHeaderProps) =>
 
     const saveEditProfile = useCallback(() => {
         dispatch(profileActions.saveProfile(true));
+        dispatch(updateProfileData());
     }, []);
 
     return (

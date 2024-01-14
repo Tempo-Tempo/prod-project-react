@@ -8,6 +8,7 @@ import { getProfileReadonly } from 'entities/MyProfile/model/selectors/getProfil
 import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { profileActions } from 'entities/MyProfile/model/slice/profileSlice';
+import { MyAvatar } from 'shared/Avatar/Avatar';
 import cls from './profileCard.module.scss';
 import { profile } from '../../model/type/profile';
 
@@ -32,6 +33,15 @@ export const ProfileCard = ({
     const editLastname = useCallback((value?: string) => {
         dispatch(profileActions.editProfile({ lastname: value }));
     }, [dispatch]);
+    const editAge = useCallback((value?: number) => {
+        dispatch(profileActions.editProfile({ age: value }));
+    }, [dispatch]);
+    const editCity = useCallback((value?: string) => {
+        dispatch(profileActions.editProfile({ city: value }));
+    }, [dispatch]);
+    const editAvatar = useCallback((value?: string) => {
+        dispatch(profileActions.editProfile({ avatar: value }));
+    }, [dispatch]);
     if (isLoading) {
         return (
             <SpinnerLoader />
@@ -39,7 +49,7 @@ export const ProfileCard = ({
     }
     if (profileError) {
         return (
-            <div className={classNames(cls.card_wrapper, {}, [className])}>
+            <div className={classNames(cls.card_wrapper, { }, [className])}>
                 <MyText
                     title={t('Ошибка загрузки профиля')}
                     body={t('Попробуйте перезагрузить страницу')}
@@ -50,51 +60,48 @@ export const ProfileCard = ({
         );
     }
     return (
-        <div className={classNames(cls.card_wrapper, {}, [className])}>
+        <div className={classNames(cls.card_wrapper, { [cls.editing]: !readonly }, [className])}>
+            {profileData?.avatar && (
+                <div className={cls.avatarWrapper}>
+                    <MyAvatar src={profileData?.avatar} />
+                </div>
+            )}
             <div className={cls.data}>
                 <MyInput
                     value={profileData?.first}
                     onChange={editFirst}
                     disabled={readonly}
-                    placeholder="Ваше имя"
+                    placeholder="Имя"
                     className={cls.input}
                 />
                 <MyInput
                     value={profileData?.lastname}
                     onChange={editLastname}
                     disabled={readonly}
-                    placeholder="Ваша фамилия"
+                    placeholder="Фамилия"
                     className={cls.input}
                 />
                 <MyInput
                     value={profileData?.age}
-                    onChange={editLastname}
+                    onChange={editAge}
                     disabled={readonly}
-                    placeholder="Ваш возраст"
+                    placeholder="Возраст"
                     className={cls.input}
                 />
                 <MyInput
                     value={profileData?.city}
-                    onChange={editLastname}
+                    onChange={editCity}
                     disabled={readonly}
-                    placeholder="Ваш город"
+                    placeholder="Город"
                     className={cls.input}
                 />
                 <MyInput
-                    value={profileData?.country}
-                    onChange={editLastname}
+                    value={profileData?.avatar}
+                    onChange={editAvatar}
                     disabled={readonly}
-                    placeholder="Ваша страна"
+                    placeholder="Аватар"
                     className={cls.input}
                 />
-                <MyInput
-                    value={profileData?.currency}
-                    onChange={editLastname}
-                    disabled={readonly}
-                    placeholder="Ваша валюта"
-                    className={cls.input}
-                />
-
             </div>
         </div>
     );
