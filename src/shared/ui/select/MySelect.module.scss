@@ -1,0 +1,14 @@
+.selectWrapper {
+    display: flex;
+}
+
+.options {
+    background: none;
+    border: 1px solid var(--primary-color);
+    margin-left: 10px;
+    color: var(--primary-color);
+}
+
+.optionsValue {
+    background: var(--bg-color);
+}
